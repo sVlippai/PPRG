@@ -1,1 +1,11 @@
-int you;
+Console.WriteLine("Pobierz wysokość choinki(2-10): ");
+int wysok = int.Parse(Console.ReadLine());
+int znakWiersz;
+int liczbaWierszów;
+int liczbaZnaków;
+    
+for (liczbaWierszów = 0; liczbaWierszów == wysok; liczbaWierszów++)
+{
+    for (znakWiersz = 0; znakWiersz ; znakWiersz++)
+        Console.Write("*");
+}
