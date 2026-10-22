@@ -1,0 +1,16 @@
+while (true)
+
+{
+    Console.Write("Ile dni trwa wyprawa?");
+    int dni = int.Parse(Console.ReadLine());
+    
+    if (dni < 1 || dni > 7)
+    {
+        Console.Write("Napisz poprawnie.");
+        continue;
+    }
+
+    break;
+
+}
+
