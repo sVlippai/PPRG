@@ -1,0 +1,29 @@
+/*Console.Write("Rosnąco: ");
+
+int liczba1 = 0;
+
+while (liczba1 < 10)
+{
+    liczba1++;
+    Console.Write($" {liczba1} ");
+}
+
+Console.Write("\nMalejąco: ");
+
+int liczba2 = 11;
+
+do
+{
+    liczba2--;
+    Console.Write($" {liczba2} ");
+}
+while (liczba2 > 1);
+
+Console.Write("\nParzyste: ");
+
+for (int liczba3 = 0; liczba3 < 21; liczba3 += 2)
+{
+
+    Console.Write($" {liczba3} ");
+}
+Console.WriteLine("Start!");*/
