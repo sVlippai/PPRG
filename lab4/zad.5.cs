@@ -1,6 +1,6 @@
 int punktyBohater= 80;
 int punktyPrzeciwnik = 60;
-int liczbaMikstur = 2;
+int liczbaMikstur = 3;
 int tura = 1;
 
 Random random = new Random();
@@ -13,7 +13,7 @@ Console.WriteLine($"TURA: {tura} ");
 Console.WriteLine($"Zdrowie Bohatera: {punktyBohater}\nZdrowie Przeciwnika: {punktyPrzeciwnik} ");
 Console.WriteLine($"Liczba mikstur: {liczbaMikstur} ");
 
-while (graDziala || punktyBohater > 0)
+while (graDziala)
 
 {
     Console.WriteLine("Wybierz akcje: 1 - atak, 2 - mikstura, 3 - ucieczka.");
@@ -21,29 +21,67 @@ while (graDziala || punktyBohater > 0)
 
     switch (akcje)
     {
-        
-        case 1:
-            
-            for (int aktPunkty = 0; aktPunkty > 0 || ; aktPunkty++)
 
-            /*if (punktyBohater > 0)
+        case 1:
+
+            while (punktyBohater > 0 && punktyPrzeciwnik > 0)
             {
-                punktyBohater -= random.Next(8,15);
-                punktyPrzeciwnik -= random.Next(5,13);
+                punktyPrzeciwnik -= random.Next(5, 13);
+                punktyBohater -= random.Next(8, 15);
                 tura++;
                 Console.WriteLine($"TURA: {tura} ");
                 Console.WriteLine($"Zdrowie Bohatera: {punktyBohater} ");
                 Console.WriteLine($"Zdrowie Przeciwnika: {punktyPrzeciwnik} ");
+                break;
             }
-            else if (punktyBohater < 0)
+
+
+            if (punktyBohater <= 0)
             {
-                Console.WriteLine("Bohater nie moż już atakować.");
+                Console.WriteLine("Bohater nie moż już atakować. Walka przegrana...");
+                graDziala = false;
+
             }
-            else if (punktyPrzeciwnik < 0)
+            else if (punktyPrzeciwnik <= 0)
             {
                 Console.WriteLine("Przeciwnik umarł. Zwycięstwo!");
+                graDziala = false;
             }
-            break;*/
+
+            continue;
+        
+        case 2:
+            
+            while (liczbaMikstur >= 0)
+            {
+                punktyBohater += 15;
+                liczbaMikstur --;
+                Console.WriteLine($"TURA: {tura} ");
+                Console.WriteLine($"Zdrowie Bohatera: {punktyBohater} ");
+                Console.WriteLine($"Zdrowie Przeciwnika: {punktyPrzeciwnik} ");
+                break;
+            }
+
+            if (liczbaMikstur == 0)
+            {
+                Console.WriteLine("Nie masz mikstur do uzycia.");
+            }
+
+            break;
+        
+        case 3:
+            graDziala = false;
+            Console.WriteLine("Bohater uciekł. Walka skończona z wynikiem:");
+            Console.WriteLine($"Liczba tur: {tura} ");
+            Console.WriteLine($"Zdrowie Bohatera: {punktyBohater} ");
+            Console.WriteLine($"Zdrowie Przeciwnika: {punktyPrzeciwnik} ");
+            break;
+        
+        default:
+            Console.WriteLine("Nie ma takie akcji.");
+            break;
     }
+
+   
 
 }
