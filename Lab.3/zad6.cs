@@ -1,10 +1,11 @@
-﻿ Console.WriteLine("Hej,bohater! Jakie masz na imie?");
+﻿/*
+Console.WriteLine("Hej,bohater! Jakie masz na imie?");
 string username = Console.ReadLine();
  Console.WriteLine("Twoje aktualny punkty zycia: "); 
 const int maksPunkty = 100;
 int aktPunkty = int.Parse(Console.ReadLine());
 bool stan = aktPunkty > 0 && aktPunkty <= 50;
-
+ 
 
  if (stan)
 {
@@ -94,4 +95,5 @@ int mikstury = int.Parse(Console.ReadLine());
  }
  bool gotownosc = choroba == false && mikstury > 0 && (mapa || kompas) && !stan;
  Console.WriteLine($"| Gotowa/y do walki: {gotownosc} ");
+ */
  

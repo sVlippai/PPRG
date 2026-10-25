@@ -1,4 +1,4 @@
-int punktyBohater= 80;
+/*int punktyBohater= 80;
 int punktyPrzeciwnik = 60;
 int liczbaMikstur = 3;
 int tura = 1;
@@ -84,4 +84,4 @@ while (graDziala)
 
    
 
-}
+}*/
