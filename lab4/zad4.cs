@@ -1,4 +1,4 @@
-int tury;
+/*int tury;
 while (true)
 {
     Console.Write("Podaj liczbę tur od 1 do 10: ");
@@ -17,5 +17,5 @@ while (true)
     break;
 }
 
-Console.WriteLine($"Rospoczynam grę na {tury} ");
+Console.WriteLine($"Rospoczynam grę na {tury} ");*/
 
