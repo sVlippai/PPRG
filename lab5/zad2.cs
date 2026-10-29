@@ -1,4 +1,5 @@
 ﻿
+/*
 List<string> plecak = new List<string>
 {
     "Miecz",
@@ -29,5 +30,6 @@ for (int ind = 0; ind < plecak.Count; ind++)
 {
     Console.WriteLine($"{ind + 1}. {plecak[ind]}");
 }
+*/
 
 
