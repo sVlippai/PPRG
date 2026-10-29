@@ -1,4 +1,4 @@
-﻿Dictionary<string, int> ceny = new Dictionary<string, int>
+﻿/*Dictionary<string, int> ceny = new Dictionary<string, int>
 {
     { "Mikstura", 15 },
     { "Pochodnia", 5 },
@@ -40,4 +40,4 @@ foreach (var pozycja in ceny)
 {
     Console.WriteLine($"{pozycja.Key}: {pozycja.Value} złotych");
     
-}
+}*/
