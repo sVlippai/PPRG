@@ -1,4 +1,5 @@
-﻿int[] zlotoWTurach = { 5, 12, 0, 8, 15 };
+﻿/*
+int[] zlotoWTurach = { 5, 12, 0, 8, 15 };
 int lącznie = 0;
 double średnia = 0;
 int wynik = 0;
@@ -32,5 +33,6 @@ for (int tura = zlotoWTurach.Length - 1; tura >= 0; tura--)
 {
     Console.Write($" { zlotoWTurach[tura]}");
 }
+*/
 
 
