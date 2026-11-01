@@ -18,57 +18,88 @@ string action;
 while (true)
 {
     action = Console.ReadLine();
-    
-    if (int.TryParse(action, out int liczba))
-    {
-        Console.WriteLine("Nie rozumiem...");
-        continue;
-    }
 
-    if (action == "Dostawa")
+    switch (action)
     {
-        Console.WriteLine("O, fajne! Co dostawiłes?");
-        string nazwa = Console.ReadLine();
+        case "Dostawa":
+            
+            Console.WriteLine("O, fajne! Co dostawiłes?");
+            string nazwa = Console.ReadLine();
+            Console.WriteLine("Ile?");
+            int iloscDostawa = int.Parse(Console.ReadLine());
 
-        if (magazyn.ContainsKey(nazwa))
-        {
-            magazyn[nazwa]++;
-            Console.Write($"Cool! Teraz mamy: \n{nazwa}, {magazyn[nazwa]}");
-        }
-        else
-        {
+            if (magazyn.ContainsKey(nazwa))
             {
-                magazyn.Add(nazwa, 1);
-                Console.WriteLine($"O wow! Nowa pozycja! \n{nazwa}, {magazyn[nazwa]} ");
+                magazyn[nazwa]+= iloscDostawa;
+                Console.Write($"Cool! Teraz mamy: \n{nazwa}, {magazyn[nazwa]}");
             }
-        }
+            else
+            {
+                {
+                    magazyn.Add(nazwa, 1);
+                    Console.WriteLine($"O wow! Nowa pozycja! \n{nazwa}, {magazyn[nazwa]} ");
+                }
+            }
+            
+            continue;
         
-    }
 
-    if (action == "Wydanie")
-    {
-        Console.WriteLine("Okay, czego potrzebujesz?");
-        string nazwa; 
+        case "Wydanie":
+        
+            Console.WriteLine("Okay, czego potrzebujesz?");
 
-        do
+            while (true)
+            {
+                string nazwa;
+                nazwa = Console.ReadLine();
+
+                if (magazyn[nazwa] == 0)
+                {
+                    Console.WriteLine(
+                        "Niestety, już nie mamy tej pozycji. :( \nWybierz inna pozicję lub usuń nieobecne.");
+                    continue;
+                }
+
+                if (magazyn.ContainsKey(nazwa))
+                {
+                    magazyn[nazwa]--;
+                    Console.WriteLine($"Proszę bardzo! Aktualny stan: {nazwa}, {magazyn[nazwa]} ");
+                    Console.WriteLine("Coś jeszcze?");
+                    continue;
+                }
+
+                if (nazwa == "Usunac")
+                {
+                    Console.WriteLine($"Okay, czego chcesz ucunać?");
+                    foreach (var pozycja in magazyn)
+                    {
+                        Console.WriteLine($"{pozycja.Key}: {pozycja.Value}");
+                        continue;
+                    }
+
+                    string usun = Console.ReadLine();
+
+                    if (magazyn.ContainsKey(usun) && magazyn[usun] == 0)
+                    {
+                        magazyn.Remove(usun);
+                        Console.WriteLine($"Pozycja {usun} zostala usujeta!");
+                    }
+                    else if (magazyn.ContainsKey(usun) && magazyn[usun] > 0)
+                    {
+                        Console.WriteLine($"Nie możemy to usunać.");
+                        continue;
+                    }
+                }
+
+                break;
+            }
+
+            continue;
+        
+        default:
         {
-            nazwa = Console.ReadLine();
-            magazyn[nazwa]--;
-            Console.WriteLine($"Proszę bardzo! Aktualny stan: {nazwa}, {magazyn[nazwa]} ");
-            Console.WriteLine("Coś jeszcze?");
-            
-            
-            if (magazyn[nazwa] == 0)
-                             {
-                                 Console.WriteLine("Niestety, już nie mamy tej pozycji. :(");
-                                 continue;
-                             }
-                             
-
-        } while (magazyn.ContainsKey(nazwa) && magazyn[nazwa] > 0) ;
-        
-        
+            Console.WriteLine("Nie rozumiem...");
+            continue;
+        }
     }
-
-   break;
 }
