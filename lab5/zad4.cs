@@ -1,4 +1,5 @@
-﻿int tura;
+﻿/*
+int tura;
 int suma = 0;
 
 while (true)
@@ -16,8 +17,6 @@ while (true)
 }
 
 int[] zlotoWTur = new int[tura];
-int najmniejsze = zlotoWTur[0];
-int najwieksze = zlotoWTur[0];
 int wynik = 0;
 
 for (int ind = 0; ind < zlotoWTur.Length; ind++)
@@ -26,25 +25,74 @@ for (int ind = 0; ind < zlotoWTur.Length; ind++)
         zlotoWTur[ind] = int.Parse(Console.ReadLine()!);
         suma += zlotoWTur[ind];
         
-        if (zlotoWTur[ind] < najmniejsze)
-        {
-                najmniejsze = zlotoWTur[ind];
-        }
+}
 
-        if (zlotoWTur[ind] > najwieksze)
+int najmniejsze = zlotoWTur[0];
+int najwieksze = zlotoWTur[0];
+
+for (int i = 1; i < zlotoWTur.Length; i++)
+{
+        if (zlotoWTur[i] < najmniejsze)
         {
-                najwieksze = zlotoWTur[ind];
+                najmniejsze = zlotoWTur[i];
         }
         
-        if (zlotoWTur[ind] == najwieksze)
+        if (zlotoWTur[i] > najwieksze)
+        { 
+                najwieksze = zlotoWTur[i];
+        }
+
+       
+        
+}
+
+foreach (int round in zlotoWTur)
+{
+        if (round == najwieksze)
+               { 
+                       wynik++;
+               } 
+        
+}
+
+int nul = -1;
+int index = -1;
+for (int tur = 0; tur < zlotoWTur.Length; tur++)
+{
+       
+        
+        if (zlotoWTur[tur] == najwieksze)
         {
-                wynik++;
+             index = tur;
+             break;
         }
 }
+
+for (int tur = 0; tur < zlotoWTur.Length; tur++)
+{
+        if (zlotoWTur[tur] == 0)
+        {
+                nul = tur;
+                break;
+
+        }
+}
+
 Console.WriteLine($"Suma: {suma}");
 Console.WriteLine($"Minimum: {najmniejsze}");
 Console.WriteLine($"Maksimum: {najwieksze}");
-Console.WriteLine($"Liczba tur z maiksimum: {wynik}");
+Console.WriteLine($"Pierwsza tura z maksymalnym wynikiem: {index + 1}");
+Console.WriteLine($"Liczba tur z maksimum: {wynik}");
+if (nul > -1)
+{
+        Console.WriteLine($"Pierwsza tura bez zlota: {nul + 1}");
+}
+else
+{
+        Console.WriteLine("Nie ma tur z wynikiem 0.");
+}
+*/
+
 
 
 
