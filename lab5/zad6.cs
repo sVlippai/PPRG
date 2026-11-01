@@ -1,41 +1,74 @@
-List<string> przedmioty = new List<string>
+Dictionary<string, int> magazyn = new Dictionary<string, int>
 {
-    "Miecz",
-    "Tarcza",
-    "Mikstura",
-    "Klucz"
+    { "Mikstura", 3 },
+    { "Pochodnia", 2 },
+    { "Klucz", 1 }
 };
 
-for (int index = 0; index < przedmioty.Count; index++)
+Console.WriteLine("Hejka! Witamy w naszym magazyne! To nasz katalog:");
+
+foreach (var pozycja in magazyn)
 {
-    Console.WriteLine($"{index +1}. {przedmioty[index]}");
+    Console.WriteLine($"{pozycja.Key}: {pozycja.Value}");
 }
 
-int przedmiot;
-Console.WriteLine("Wybierz przedmiot do usunięcia:");
+Console.WriteLine("Z czym do nas przyszedł?");
+string action;
+
 while (true)
 {
-    bool format = int.TryParse(Console.ReadLine(), out przedmiot);
-
-    if (!format)
+    action = Console.ReadLine();
+    
+    if (int.TryParse(action, out int liczba))
     {
-        Console.WriteLine("Wpisz liczbę całkowita.");
+        Console.WriteLine("Nie rozumiem...");
         continue;
     }
-    
-    if (przedmiot > przedmioty.Count || przedmiot < 0)
+
+    if (action == "Dostawa")
     {
-        Console.WriteLine("Numer musi należeć do zakresu 1-4.");
-        continue;
+        Console.WriteLine("O, fajne! Co dostawiłes?");
+        string nazwa = Console.ReadLine();
+
+        if (magazyn.ContainsKey(nazwa))
+        {
+            magazyn[nazwa]++;
+            Console.Write($"Cool! Teraz mamy: \n{nazwa}, {magazyn[nazwa]}");
+        }
+        else
+        {
+            {
+                magazyn.Add(nazwa, 1);
+                Console.WriteLine($"O wow! Nowa pozycja! \n{nazwa}, {magazyn[nazwa]} ");
+            }
+        }
+        
     }
-    
 
-    break;
-}
-Console.WriteLine($"Usunięto: {przedmioty[przedmiot -1]}");
-przedmioty.RemoveAt(przedmiot -1);
+    if (action == "Wydanie")
+    {
+        Console.WriteLine("Okay, czego potrzebujesz?");
+        string nazwa; 
 
-for (int index = 0; index < przedmioty.Count; index++)
-{
-    Console.WriteLine($"{index +1}. {przedmioty[index]}");
+        do
+        {
+            nazwa = Console.ReadLine();
+            magazyn[nazwa]--;
+            Console.WriteLine($"Proszę bardzo! Aktualny stan: {nazwa}, {magazyn[nazwa]} ");
+            Console.WriteLine("Coś jeszcze?");
+            
+            
+            if (magazyn[nazwa] == 0)
+                             {
+                                 Console.WriteLine("Niestety, już nie mamy tej pozycji. :(");
+                                 continue;
+                             }
+                             
+
+        } while (magazyn.ContainsKey(nazwa) && magazyn[nazwa] > 0) ;
+        
+        
+    }
+
+   break;
 }
