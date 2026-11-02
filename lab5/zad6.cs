@@ -1,3 +1,4 @@
+/*
 Dictionary<string, int> magazyn = new Dictionary<string, int>
 {
     { "Mikstura", 3 },
@@ -137,6 +138,14 @@ while (otwarcie)
                 }
             }
             continue;
+        
+        case "Katalog":
+
+            foreach (var pozycja in magazyn)
+            {
+                Console.WriteLine($"{pozycja.Key}: {pozycja.Value}");
+            }
+            continue;
 
         case "Zakonczenie":
         {
@@ -152,3 +161,4 @@ while (otwarcie)
         continue;
     }
 }
+*/
