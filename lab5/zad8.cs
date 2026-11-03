@@ -32,7 +32,7 @@ double.TryParse(Console.ReadLine(), out double mnoznik);
 double atakSpecj = mnoznik * (premieBroni += sila);*/
 
  Console.WriteLine("Ile masz zlota?");
-decimal.TryParse(Console.ReadLine(), out decimal zloto);
+int.TryParse(Console.ReadLine(), out int zloto);
 /*string zasobność = zloto > 50 ? "bogata/y!" : "nie bogaty...";*/
 
 
@@ -51,11 +51,14 @@ int.TryParse(Console.ReadLine(), out int mikstury);*/
 
 bool graDziala = true;
 int eksploracja = 0;
-int numertury = 0;
+int numertury = 1;
+int sumaZLoto = 0;
+int sumaZlotoTura = 0;
 int uzuciePrzedmiot = 0;
 int dodanieZnalezisko = 0;
 int wyrzucaniePrzedm = 0;
 string odpowiedz;
+int turyMaks = 20;
 
 string[] znaleziska =
 {
@@ -74,6 +77,8 @@ List<string> plecak = new List<string>
 
 List<string> historia = new List<string>();
 
+int[] zlotoZdobyteWTurach = new int[20];
+
 Console.WriteLine($"===== Hej, {username}! =====");
 Console.WriteLine("Tura : 1");
 Console.WriteLine($"Twoje startowe dane:");
@@ -86,7 +91,15 @@ while (graDziala && aktPunkty >= 0)
  Console.BackgroundColor = ConsoleColor.DarkBlue;
  Console.ForegroundColor = ConsoleColor.Cyan;
  Console.WriteLine("Wybierz akcje:\n1 - Eksploruj loch, 2 - Pokaż plecak, 3 - Użyj przedmiotu, 4 - Dodaj znalezisko\n5 - Wyrzuć przedmiot, 6 - Pokaż historię, 7 - Pokaż statystyki wyprawy\n8 - Zakończ grę");
+ Console.WriteLine($"Masz {turyMaks} tur.");
  int.TryParse(Console.ReadLine(), out int akcje);
+ turyMaks--;
+
+ if (turyMaks == 0)
+ {
+  Console.WriteLine("Więciej nie masz tur.");
+  graDziala = false;
+ }
 
 
  switch (akcje)
@@ -98,11 +111,14 @@ while (graDziala && aktPunkty >= 0)
    {
     do
     {
-
-     historia.Add("EKsplorujesz");
+     
      eksploracja++;
      aktPunkty -= 8;
+     sumaZlotoTura += 10;
      zloto += 10;
+     zlotoZdobyteWTurach[numertury - 1] += sumaZlotoTura;
+     
+     
 
      if (aktPunkty < 0)
      {
@@ -112,6 +128,7 @@ while (graDziala && aktPunkty >= 0)
 
      Console.ForegroundColor = ConsoleColor.Green;
      Console.WriteLine($"Eksplorujesz! ZLoto : {zloto}, zdrowie: {aktPunkty}");
+     historia.Add("EKsplorujesz");
      Console.ResetColor();
      Console.BackgroundColor = ConsoleColor.DarkBlue;
      Console.ForegroundColor = ConsoleColor.Cyan;
@@ -178,12 +195,16 @@ while (graDziala && aktPunkty >= 0)
         Console.WriteLine($"{numerPlecak + 1}. {plecak[numerPlecak]}");
         Console.ResetColor();
        }
-    Console.WriteLine("Wpicz numer przedmiotu:");
+    Console.BackgroundColor = ConsoleColor.DarkBlue;
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("Wpicz numer przedmiotu:");//задник текст цвет
     int.TryParse(Console.ReadLine(), out numer);
     uzuciePrzedmiot++;
+    
 
     if (numer - 1 == plecak.IndexOf("Mikstura"))
     {
+     historia.Add($"Używasz przedmiot: {plecak[numer - 1]} ");
      aktPunkty += 20;
      plecak.RemoveAt(numer - 1);
      Console.WriteLine($"Twoje punkty zdrowia: {aktPunkty}");
@@ -191,18 +212,20 @@ while (graDziala && aktPunkty >= 0)
 
     if (numer - 1 == plecak.IndexOf("Pochodnia"))
     {
+     historia.Add($"Używasz przedmiot: {plecak[numer - 1]} ");
      Console.WriteLine("Rozświetlono korytarz.");
      plecak.RemoveAt(numer - 1);
     }
 
     if (numer - 1 == plecak.IndexOf("Zwój"))
     {
+     historia.Add($"Używasz przedmiot: {plecak[numer - 1]} ");
      zloto += 15;
      plecak.RemoveAt(numer - 1);
      Console.WriteLine($"Twoje zloto: {zloto}");
     }
     
-    if (numer < 0 || numer > plecak.Count)
+    if (numer < 0 || numer >= plecak.Count)
     {
       uzuciePrzedmiot--;
       Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -212,7 +235,7 @@ while (graDziala && aktPunkty >= 0)
     }
     Console.BackgroundColor = ConsoleColor.DarkBlue;
     Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("Contunujemy?");
+    Console.WriteLine("Contunujemy?");//неправиотный ввод
     odpowiedz = Console.ReadLine();
     
      if (odpowiedz == "Nie" || odpowiedz == "nie") 
@@ -229,10 +252,11 @@ while (graDziala && aktPunkty >= 0)
    do
    {
     if (plecak.Count == 6)
-       {
-        Console.WriteLine("Nie masz wolnego miejsca w plecaku.");
-        break;
-       }
+    {
+     Console.WriteLine("Nie masz wolnego miejsca w plecaku.");
+     break;
+    }
+
     for (int index = 0; index < znaleziska.Length; index++)
     {
      Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -240,13 +264,15 @@ while (graDziala && aktPunkty >= 0)
      Console.WriteLine($"{index + 1}. {znaleziska[index]}");
      Console.ResetColor();
     }
-    
+
     Console.BackgroundColor = ConsoleColor.DarkBlue;
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("Wybiersz nagrodę.");
     int.TryParse(Console.ReadLine(), out numer1);
-    plecak.Add(znaleziska[numer1 - 1]);
     dodanieZnalezisko++;
+    plecak.Add(znaleziska[numer1 - 1]);
+    historia.Add($"Dodałeś nagrodę: {znaleziska[numer1 - 1]}");
+    
     Console.WriteLine("Teraz masz:");
     
     for (int numerPlecak = 0; numerPlecak < plecak.Count; numerPlecak++)
@@ -285,7 +311,9 @@ while (graDziala && aktPunkty >= 0)
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("Czego chcesz usunac?");
     int.TryParse(Console.ReadLine(), out numer2);
-    plecak.RemoveAt(numer2);
+    wyrzucaniePrzedm++;
+    historia.Add($"Wyrzuciłeś przedmiot: {plecak[numer2 - 1]} ");
+    plecak.RemoveAt(numer2 -1);
     Console.WriteLine("Teraz masz:");
     for (int numerPlecak = 0; numerPlecak < plecak.Count; numerPlecak++)
     {
@@ -300,12 +328,52 @@ while (graDziala && aktPunkty >= 0)
     Console.WriteLine("Contunujemy?");
     odpowiedz = Console.ReadLine();
     
-    
+    if (odpowiedz == "Nie" || odpowiedz == "nie") 
+    {
+     numertury++;
+     break;
+    }
     
    }while (odpowiedz == "Tak" || odpowiedz == "tak");
    continue;
-
+  
+  case 6:
    
+   if (historia.Count == 0)
+   {
+    Console.BackgroundColor = ConsoleColor.DarkBlue;
+    Console.ForegroundColor = ConsoleColor.DarkRed;
+    Console.WriteLine("Nie masz zapiców w swojej historię.");
+    Console.ResetColor();
+    break;
+   }
+   
+   foreach(var action in historia)
+   {
+    Console.BackgroundColor = ConsoleColor.DarkBlue;
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine(action);
+    Console.ResetColor();
+   }
+   Console.BackgroundColor = ConsoleColor.DarkBlue;
+   Console.ForegroundColor = ConsoleColor.Cyan;
+   Console.WriteLine($"Eksploracja: {eksploracja} raz/y.\nUżycie przedmiotu: {uzuciePrzedmiot} raz/y.\nDodanie znalezisko: {dodanieZnalezisko} raz/y.\nWyrzucanie przedmiotu: {wyrzucaniePrzedm} raz/y.");
+   continue;
+  
+  case 7:
+   Console.BackgroundColor = ConsoleColor.DarkBlue;
+   Console.ForegroundColor = ConsoleColor.Cyan;
+   Console.WriteLine($"{eksploracja} eksploracji.");
+   
+   for (int tura = 0; tura < zlotoZdobyteWTurach.Length; tura++)
+   {
+    Console.WriteLine($"Tura: {tura + 1}: { zlotoZdobyteWTurach[tura]} sztuk złota.");
+    sumaZLoto += zlotoZdobyteWTurach[tura];
+   }
+   Console.WriteLine($"lacznie w turach {sumaZLoto}");
+   continue;
+   
+  
  }
  
 }
