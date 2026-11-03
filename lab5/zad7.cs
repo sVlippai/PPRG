@@ -1,3 +1,4 @@
+/*
 bool gra = true;
 int ekspLiczba = 0;
 int odpoczLiczba = 0;
@@ -115,4 +116,5 @@ while (gra)
         }
     }
 }
+*/
 
