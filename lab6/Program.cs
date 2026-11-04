@@ -148,9 +148,7 @@ Console.WriteLine($"Zloto: {zloto} | Zdrowie: {aktPunkty}/{maksPunkty} | Plecak:
 while (graDziala && aktPunkty >= 0)
 {
  
- int Heal(int aktPunkty) => Math.Min(aktPunkty + 8, 100);
- aktPunkty = Heal(aktPunkty);
-  
+ 
  BackgroundSet();
  Menu();
  Console.WriteLine($"Masz {turyMaks} tur/y.");
@@ -173,9 +171,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
  {
   
   case 1:
-
-   while (aktPunkty > 0)
-   {
+   
     do
     {
      eksploracja++;
@@ -212,7 +208,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
      
      
     } while (odpowiedz == "Tak" || odpowiedz == "tak");
-   }
+   
    continue;
   
   case 2:
@@ -224,6 +220,9 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
      break;
     }
 
+     int Heal(int aktPunkty) => Math.Min(aktPunkty + 8, 100);
+     aktPunkty = Heal(aktPunkty);
+  
     Heal(aktPunkty);
     Console.WriteLine($"Odpoczywasz. Twoje zdrowie: {aktPunkty}");
     historia.Add("Odpoczywasz");
@@ -523,13 +522,13 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
   
   case 10:
    
-   ShowStatystyk(username,  numertury,  aktPunkty,  maksPunkty,  zloto, sila, premieBroni, eksploracja);
+   ShowStatystyk(username,  numertury,  aktPunkty,  maksPunkty,  sila, premieBroni, zloto, eksploracja);
    continue;
   
   case 11:
    graDziala = false;
    Console.WriteLine("=== KONIEC GRY ===");
-   ShowStatystyk( username,  numertury,  aktPunkty,  maksPunkty,  zloto, sila, premieBroni, eksploracja);
+   ShowStatystyk( username,  numertury,  aktPunkty,  maksPunkty, sila, premieBroni, zloto, eksploracja);
    if (historia.Count < 3)
    {
     foreach (var action in historia)
