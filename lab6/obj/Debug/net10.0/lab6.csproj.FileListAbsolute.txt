@@ -1,0 +1,15 @@
+/Users/veranikalipai/RiderProjects/PPRG/lab6/bin/Debug/net10.0/lab6
+/Users/veranikalipai/RiderProjects/PPRG/lab6/bin/Debug/net10.0/lab6.deps.json
+/Users/veranikalipai/RiderProjects/PPRG/lab6/bin/Debug/net10.0/lab6.runtimeconfig.json
+/Users/veranikalipai/RiderProjects/PPRG/lab6/bin/Debug/net10.0/lab6.dll
+/Users/veranikalipai/RiderProjects/PPRG/lab6/bin/Debug/net10.0/lab6.pdb
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.GeneratedMSBuildEditorConfig.editorconfig
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.AssemblyInfoInputs.cache
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.AssemblyInfo.cs
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.csproj.CoreCompileInputs.cache
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.sourcelink.json
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.dll
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/refint/lab6.dll
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.pdb
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/lab6.genruntimeconfig.cache
+/Users/veranikalipai/RiderProjects/PPRG/lab6/obj/Debug/net10.0/ref/lab6.dll
