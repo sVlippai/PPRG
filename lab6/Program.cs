@@ -90,6 +90,10 @@ int Damage(int sila, int premieBroni)
 }
 int damage = Damage(sila, premieBroni);
 
+bool IsContinue()
+{
+ return odpowiedz == "Tak" || odpowiedz == "tak";
+}
 
 
 void Menu()
@@ -110,7 +114,7 @@ void BackgroundSet()
  Console.ForegroundColor = ConsoleColor.Cyan;
 }
 
-void Plecak(int numerPlecak)
+void Plecak()
 {
  for (numerPlecak = 0; numerPlecak < plecak.Count; numerPlecak++)
  {
@@ -121,11 +125,33 @@ void Plecak(int numerPlecak)
  }
 }
 
+void Historia()
+{
+ int startIndex = Math.Max(0, historia.Count - 3);
+ for (int index = startIndex; index < historia.Count; index++)
+ {
+  Console.BackgroundColor = ConsoleColor.DarkBlue;
+  Console.ForegroundColor = ConsoleColor.Green;
+  Console.WriteLine(historia[index]);
+  Console.ResetColor();
+ }
+}
+
 void PlecakCheck()
 {
  Console.ForegroundColor = ConsoleColor.DarkRed;
  Console.WriteLine("Twój plecak jest pusty.");
  Console.ResetColor();
+}
+
+int Heal(int aktPunkty) => Math.Min(aktPunkty + 8, 100);
+
+void HistoriaCheck()
+{
+ if (historia.Count == 0)
+ {
+  Console.WriteLine("Nie masz zapisów w swojej historii.");
+ }
 }
 
 void ShowStatystyk(string username, int numertury, int aktPunkty, int maksPunkty, int sila, int premieBroni, int zloto, int eksploracja)
@@ -166,48 +192,43 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
   graDziala = false;
  }
 
-
  switch (akcje)
  {
   
   case 1:
-   
-    do
+
+   do
+   {
+    eksploracja++;
+    aktPunkty -= 8;
+    sumaZlotoTura += 10;
+    zloto += 10;
+    zlotoZdobyteWTurach[numertury - 1] += sumaZlotoTura;
+
+    if (aktPunkty < 0)
     {
-     eksploracja++;
-     aktPunkty -= 8;
-     sumaZlotoTura += 10;
-     zloto += 10;
-     zlotoZdobyteWTurach[numertury - 1] += sumaZlotoTura;
+     aktPunkty = 0;
+     graDziala = false;
+    }
 
-     if (aktPunkty < 0)
-     {
-      aktPunkty = 0;
-      graDziala = false;
-     }
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"Eksplorujesz! ZLoto : {zloto}, zdrowie: {aktPunkty}");
+    historia.Add("EKsplorujesz");
+    Console.ResetColor();
 
-     Console.ForegroundColor = ConsoleColor.Green;
-     Console.WriteLine($"Eksplorujesz! ZLoto : {zloto}, zdrowie: {aktPunkty}");
-     historia.Add("EKsplorujesz");
+    if (aktPunkty < 30 && aktPunkty > 0)
+    {
+     Console.BackgroundColor = ConsoleColor.DarkBlue;
+     Console.ForegroundColor = ConsoleColor.Yellow;
+     Console.WriteLine("Masz niskie punkty zycia!");
      Console.ResetColor();
-     
-     if (aktPunkty < 30 && aktPunkty > 0)
-          {
-           Console.ForegroundColor = ConsoleColor.Yellow;
-           Console.WriteLine("Masz niskie punkty zycia!");
-           Console.ResetColor();
-          }
-     
-     Continue();
-     odpowiedz = Console.ReadLine();
-     if (odpowiedz == "Nie" || odpowiedz == "nie")
-         {
-          numertury++;
-          break;
-         }
-     
-     
-    } while (odpowiedz == "Tak" || odpowiedz == "tak");
+    }
+
+    Continue();
+    odpowiedz = Console.ReadLine();
+    
+   } while (IsContinue());
+   numertury++;
    
    continue;
   
@@ -220,23 +241,17 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
      break;
     }
 
-     int Heal(int aktPunkty) => Math.Min(aktPunkty + 8, 100);
+     
      aktPunkty = Heal(aktPunkty);
-  
-    Heal(aktPunkty);
+     
     Console.WriteLine($"Odpoczywasz. Twoje zdrowie: {aktPunkty}");
     historia.Add("Odpoczywasz");
     odpoczynek++;
     Continue();
     odpowiedz = Console.ReadLine();
     
-    if (odpowiedz == "Nie" || odpowiedz == "nie")
-       {
-        numertury++;
-        break;
-       }
-    
-   }while (odpowiedz == "Tak" || odpowiedz == "tak");
+   }while (IsContinue());
+   numertury++;
 
    
    continue;
@@ -273,14 +288,9 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
      BackgroundSet();
      Continue();
      odpowiedz = Console.ReadLine();
-    
-     if (odpowiedz == "Nie" || odpowiedz == "nie")
-     {
-      numertury++;
-      break;
-     }
        
-   } while (odpowiedz == "Tak" || odpowiedz == "tak");
+   } while (IsContinue());
+   numertury++;
    continue;
 
   case 4:
@@ -291,7 +301,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
     break;
    }
    
-   Plecak(numerPlecak);
+   Plecak();
    
    continue;
 
@@ -306,7 +316,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
 
    do
    {
-    Plecak(numerPlecak);
+    Plecak();
     BackgroundSet();
     
     Console.WriteLine("Wpisz numer przedmiotu:");
@@ -359,20 +369,14 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
 
     Continue();
     odpowiedz = Console.ReadLine();
-
-    if (odpowiedz == "Nie" || odpowiedz == "nie")//method
-    {
-     numertury++;
-     break;
-    }
-
-   } while (odpowiedz == "Tak" || odpowiedz == "tak");
+    
+   } while (IsContinue());
+   numertury++;
 
    continue;
 
   case 6:
    int numer2;
-   odpowiedz = "";
    do
    {
     if (plecak.Count == 6)
@@ -396,7 +400,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
     historia.Add($"Dodałeś nagrodę: {znaleziska[numer2 - 1]}");
     Console.WriteLine("Teraz masz:");
 
-    Plecak(numerPlecak);
+    Plecak();
     BackgroundSet();
     
      if (numer2 - 1 < 0 || numer2 - 1 > znaleziska.Length)
@@ -410,21 +414,15 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
     
     Continue();
     odpowiedz = Console.ReadLine();
-
-    if (odpowiedz == "Nie" || odpowiedz == "nie")//method
-    {
-     numertury++;
-     break;
-    }
-
-   } while (odpowiedz == "Tak" || odpowiedz == "tak");
+    
+   } while (IsContinue());
+   numertury++;
    
 
    continue;
 
   case 7:
    int numer3;
-   odpowiedz = "";
    do
    {
     if (plecak.Count == 0)
@@ -433,7 +431,7 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
      break;
     }
     
-    Plecak(numerPlecak);
+    Plecak();
     BackgroundSet();
     
     Console.WriteLine("Czego chcesz usunac?");
@@ -453,18 +451,13 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
     plecak.RemoveAt(numer3 - 1);
     Console.WriteLine("Teraz masz:");
     
-    Plecak(numerPlecak);
+    Plecak();
 
     Continue();
     odpowiedz = Console.ReadLine();
-
-    if (odpowiedz == "Nie" || odpowiedz == "nie")//method
-    {
-     numertury++;
-     break;
-    }
-
-   } while (odpowiedz == "Tak" || odpowiedz == "tak");
+    
+   } while (IsContinue());
+   numertury++;
 
    continue;
 
@@ -477,17 +470,10 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
     Console.ResetColor();
     break;
    }
-
-   foreach (var action in historia)
-   {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine(action);
-    Console.ResetColor();
-   }
-
    BackgroundSet();
-   Console.WriteLine(
-    $"Eksploracja: {eksploracja} raz/y.\nUżycie przedmiotu: {uzuciePrzedmiot} raz/y.\nDodanie znalezisko: {dodanieZnalezisko} raz/y.\nWyrzucanie przedmiotu: {wyrzucaniePrzedm} raz/y.");
+   Historia();
+   BackgroundSet();
+   Console.WriteLine($"Eksploracja: {eksploracja} raz/y.\nUżycie przedmiotu: {uzuciePrzedmiot} raz/y.\nDodanie znalezisko: {dodanieZnalezisko} raz/y.\nWyrzucanie przedmiotu: {wyrzucaniePrzedm} raz/y.\n Atak: {liczbaAtak} raz/y.\nOdpoczynek: {odpoczynek} raz/y.");
    continue;
 
   case 9:
@@ -529,27 +515,13 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
    graDziala = false;
    Console.WriteLine("=== KONIEC GRY ===");
    ShowStatystyk( username,  numertury,  aktPunkty,  maksPunkty, sila, premieBroni, zloto, eksploracja);
-   if (historia.Count < 3)
-   {
-    foreach (var action in historia)
-    {
-     Console.ForegroundColor = ConsoleColor.Green;
-     Console.WriteLine(action);
-     Console.ResetColor();
-    }
-    BackgroundSet();
-    Console.WriteLine("Powód zakończenia: gracz wybrał wyjście."); 
-   }
-
-   for (int index = historia.Count - 3; index < historia.Count; index++)
-   {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine(historia[index]);
-    Console.ResetColor();
-   }
+   HistoriaCheck();
+   Historia();
+   Console.WriteLine("Twój plecak:");
    BackgroundSet();
    Console.WriteLine("Powód zakończenia: gracz wybrał wyjście.");
    break;
+  
 
   default:
   {
@@ -559,26 +531,22 @@ if (akcje == 4 || akcje == 8 || akcje == 9 || akcje == 10)
    continue;
  }
 }
-
-Console.WriteLine("=== GRACZ UMATŁ ==="); 
-ShowStatystyk( username,  numertury,  aktPunkty,  maksPunkty,  zloto, sila, premieBroni,  eksploracja);
-if (historia.Count < 3)
+if (aktPunkty == 0)
 {
- foreach (var action in historia)
- {
-  Console.ForegroundColor = ConsoleColor.Green;
-  Console.WriteLine(action);
-  Console.ResetColor();
- }
+ BackgroundSet();
+ Console.WriteLine("=== GRACZ UMARŁ ==="); 
+ ShowStatystyk( username,  numertury,  aktPunkty,  maksPunkty,  sila, premieBroni, zloto, eksploracja);
+ HistoriaCheck();
+ Historia();
+ BackgroundSet();
+ Console.WriteLine("Twój plecak");
+ Plecak();
+ 
+ BackgroundSet();
 }
 
-for (int index = Math.Max(0, historia.Count - 3); index < historia.Count; index++)
- {
-  Console.ForegroundColor = ConsoleColor.Green;
-  Console.WriteLine(historia[index]);
-  Console.ResetColor();
- }
- BackgroundSet();
+ 
+
 
  
 
