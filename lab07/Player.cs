@@ -37,16 +37,23 @@
 
     public void TakeDamage(int damage)
     {
+
         Health -= damage;
 
         if (Health < 0)
         {
             Health = 0;
         }
+        
     }
 
     public void Heal(int amount)
     {
+        if (Health < 0 || Health == 0)
+        {
+            Console.WriteLine("Player is dead. Healing was declined.");
+            return;
+        }
         Health += amount;
 
         if (Health > MaxHealth)

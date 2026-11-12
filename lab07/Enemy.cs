@@ -20,6 +20,12 @@ public class Enemy
     public void TakeDamage(int damage)
     {
         Health -= damage;
+        
+         if (damage == 0 || damage < 0 )
+         { 
+             Console.WriteLine("Atak sie nie udal.");
+             Health += damage;
+         }
 
         if (Health < 0)
         {
