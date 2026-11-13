@@ -2,9 +2,6 @@
 
 public class Enemy
 {
-    
-
-    
     public string Name { get; }
     public int Health { get; set; }
     public int Damage { get; }
@@ -19,14 +16,14 @@ public class Enemy
 
     public void TakeDamage(int damage)
     {
-        Health -= damage;
-        
          if (damage == 0 || damage < 0 )
          { 
              Console.WriteLine("Atak sie nie udal.");
-             Health += damage;
-         }
-
+             return;
+         } 
+         
+        Health -= damage;
+        
         if (Health < 0)
         {
             Health = 0;

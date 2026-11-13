@@ -20,13 +20,13 @@
         MaxExperience = maxexperience;
     }
 
-    public void Doswiadczenie(int dodanie)
+    public void DoswiadczenieTask1(int dodanie)
     {
         Experience += dodanie;
         
         if (Experience >= MaxExperience)
         {
-            Experience = MaxExperience;
+            Experience -= MaxExperience;
             MaxHealth += 20;
             Health = MaxHealth;
             Level++;
@@ -37,6 +37,12 @@
 
     public void TakeDamage(int damage)
     {
+        if (damage == 0 || damage < 0)
+        {
+            Console.WriteLine("Atak sie nie udal.");
+            return;
+        }
+
 
         Health -= damage;
 
@@ -49,7 +55,12 @@
 
     public void Heal(int amount)
     {
-        if (Health < 0 || Health == 0)
+        if (amount <= 0)
+        {
+            Console.WriteLine("Healing was declined.");
+            return;
+        }
+        if (!IsAlive())
         {
             Console.WriteLine("Player is dead. Healing was declined.");
             return;
