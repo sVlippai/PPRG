@@ -7,17 +7,18 @@
     public int Experience { get; set; }
     public int MaxExperience { get; set; }
     public int Gold { get; set; }
+    public int Damage { get; set; }
     
     
-    public Player(string name, int maxHealth, int health, int level, int experience, int maxexperience, int gold)
+    public Player(string name, int maxHealth, int health, int level, int experience, int maxexperience, int damage)
     {
         Name = name;
         MaxHealth = maxHealth;
         Health = health;
-        Gold = gold;
         Level = level;
         Experience = experience;
         MaxExperience = maxexperience;
+        Damage = damage;
     }
 
     public void DoswiadczenieTask1(int dodanie)

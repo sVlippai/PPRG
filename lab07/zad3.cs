@@ -1,8 +1,20 @@
-Player player = new Player("Maciuś", 100, 9, 0, 35,50, 0);
+/*Player player = new Player("Maciuś", 100, 9, 0, 35,50, 0);
 Player player2 = new Player("Bob", 100, 20, 1, 45, 80, 1);
 Enemy goblin = new Enemy("Goblin", 10, 8);
 Enemy ork = new Enemy("Ork", 20, 5);
-    
+
+List<Enemy> enemies = new List<Enemy>
+    {
+         new Enemy("Goblin", 30, 8),
+         new Enemy("Nietoperz", 20, 5),
+         new Enemy("Ork", 70, 15)
+     };
+
+     foreach (Enemy enemy in enemies)
+     {
+         Console.WriteLine($"{enemy.Name}: {enemy.Health} HP");
+     }
+
 Console.WriteLine($"{player.Name} spotyka {goblin.Name}.");
 Console.WriteLine($"{player2.Name} spotyka {ork.Name}.");
     
@@ -38,4 +50,4 @@ else
     player2.DoswiadczenieTask1(19);
     Console.WriteLine(
         $"{player2.Name} ma {player2.Level} level, {player2.Experience}/{player2.MaxExperience} doswiadczenia i {player2.Health}/{player2.MaxHealth} HP.");
-}
+}*/

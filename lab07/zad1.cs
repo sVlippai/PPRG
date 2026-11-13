@@ -1,6 +1,18 @@
 ﻿/*Player player = new Player("Maciuś", 100, 7, 0, 35,50, 0);
 Enemy goblin = new Enemy("Goblin", 10, 8);
-    
+
+List<Enemy> enemies = new List<Enemy>
+   {
+        new Enemy("Goblin", 30, 8),
+        new Enemy("Nietoperz", 20, 5),
+        new Enemy("Ork", 70, 15)
+    };
+ 
+    foreach (Enemy enemy in enemies) 
+    { 
+        Console.WriteLine($"{enemy.Name}: {enemy.Health} HP");
+    }
+    ё
 Console.WriteLine($"{player.Name} spotyka {goblin.Name}.");
     
 goblin.TakeDamage(0);
