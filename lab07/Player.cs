@@ -8,7 +8,7 @@
     public int MaxExperience { get; set; }
     public int Gold { get; set; }
     
-
+    
     public Player(string name, int maxHealth, int health, int level, int experience, int maxexperience, int gold)
     {
         Name = name;
