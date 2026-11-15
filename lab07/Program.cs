@@ -1,39 +1,38 @@
-﻿Player player = new Player("Maciuś", 100, 60, 1, 35, 50, 15);
-int itemLecz = 0;
-List<Item> medicines = new List<Item>
-{
-    new Item("Mikstura",15,3),
-    new Item("Zioła",10, 5),
-    new Item("Hotdog", 20,2 )
-};
+﻿bool graDziala = true;
+int sumaHP = 0;
+int pokonany = 0;
+string odpowiedz;
+Player player = new Player("Maciuś", 100, 9, 1, 35, 50, 15);
+List<Enemy> enemies = new List<Enemy>
+        {
+            new Enemy("Goblin", 50, 8),
+            new Enemy("Nietoperz", 20, 5),
+            new Enemy("Ork", 70, 15),
+            new Enemy("Czarodzej", 60, 20),
+            new Enemy("Szkielet", 25, 5)
+        };
 
-List<Item> invertory = new List<Item>
-{
-    new Item("Miecz", 15,1),
-    new Item("Jajco",3,5)
-};
-
-void Medicine()
-{
-    foreach (Item item in medicines)
+    void Enemies()
     {
-        Console.WriteLine($"{medicines.IndexOf(item) + 1}. {item.Name}, {item.Power}, {item.Amount} ");
+        foreach (Enemy enemy in enemies)
+        {
+            Console.WriteLine($"{enemies.IndexOf(enemy) + 1}. {enemy.Name}: {enemy.Health} HP, {enemy.Damage} dmg.");
+        }
+        Console.WriteLine($"Liczba żywych: {enemies.Count}");
     }
-}
 
-void Invertory()
-{
-    foreach (Item item in invertory)
-    {
-        Console.WriteLine($"{invertory.IndexOf(item) + 1}. {item.Name}, {item.Power}, {item.Amount} ");
-    }
-}
+
+
+Enemies();
+Console.WriteLine("Wybierz przeciwnika.");
+int enemy;
+int tura = 1;
 
 void Choice()
 {
     while (true)
     {
-        bool format = int.TryParse(Console.ReadLine(), out itemLecz);
+        bool format = int.TryParse(Console.ReadLine(), out enemy);
 
         if (!format)
         {
@@ -41,13 +40,13 @@ void Choice()
             continue;
         }
 
-        if (itemLecz <= 0)
+        if (enemy <= 0)
         {
             Console.WriteLine("Wybierz liczbę dodatna.");
             continue;
         }
 
-        if (itemLecz - 1 >= medicines.Count)
+        if (enemy - 1 >= enemies.Count)
         {
             Console.WriteLine("Wybierz liczbę od 1 do 5.");
 
@@ -59,33 +58,74 @@ void Choice()
         }
     }
 }
-Invertory();
-Console.WriteLine("------------------------");
-Medicine();
-Console.WriteLine("Wybierz przedmiot leczniczy.");
-Choice();
-Item selectedItem = medicines[itemLecz - 1];
-Item itemInInvertory = new Item(selectedItem.Name, selectedItem.Power, 1);
-invertory.Add(itemInInvertory);
-Invertory();
-Console.WriteLine("Używasz wybranego przedmiotu?");
-string answer = Console.ReadLine();
-if (answer == "y")
+
+void Check()
 {
-   itemInInvertory.Use();
-   player.Heal(itemInInvertory.Power);
-   medicines[itemLecz - 1].Use();
-   Console.WriteLine($"Twoje zdrowie: {player.Health}");
-   Invertory();
-   Console.WriteLine("------------------------");
-   Medicine();
+    Console.WriteLine("Contunujemy?(y/n)");
+    odpowiedz = Console.ReadLine();
    
 }
 
-if (answer == "n")
+
+Choice();
+
+void StatisticsPlayer()
 {
-    Console.WriteLine($"Twoje zdrowie: {player.Health}");
-       Invertory();
-       Console.WriteLine("------------------------");
-       Medicine(); 
+    Console.WriteLine($"Player: {player.Name} | HP: {player.Health} | Damage: {player.Damage}");
 }
+void StatisticsEnemy()
+{
+    Console.WriteLine($"Enemy: {enemies[enemy-1].Name} | HP: {enemies[enemy-1].Health} | Damage: {enemies[enemy-1].Damage}");
+}
+
+void Tura()
+{
+    Console.WriteLine($" ------ TURA {tura} ------ ");
+    StatisticsPlayer();
+}
+
+while (graDziala && player.IsAlive())
+    
+{
+    Tura();
+    StatisticsEnemy();
+    enemies[enemy - 1].TakeDamage(player.Damage);
+    Console.WriteLine($"{enemies[enemy - 1].Name} ma {enemies[enemy - 1].Health} HP.");
+
+    if (enemies[enemy - 1].IsAlive())
+    {
+        player.TakeDamage(enemies[enemy - 1].Damage);
+        Console.WriteLine($"{player.Name} ma {player.Health} HP.");
+        Check();
+        if (odpowiedz == "n")
+        { 
+            break; 
+        }
+    }
+    else
+    {
+        Console.WriteLine("Przeciwnik został pokonany.");
+        enemies.RemoveAt(enemy - 1);
+        pokonany++;
+        player.DoswiadczenieTask1(19);
+        Console.WriteLine($"Zwycięstwo! {player.Name} ma {player.Level} level, {player.Experience}/{player.MaxExperience} doswiadczenia i {player.Health}/{player.MaxHealth} HP.");
+        Check();
+        if (odpowiedz == "n")
+        { 
+            break; 
+        }
+        if (odpowiedz == "y")
+        { 
+            tura++;
+            Enemies();
+            Choice();
+        }
+    }
+}
+Tura();
+if (!player.IsAlive())
+{
+    Console.WriteLine("Player is dead.");
+}
+Enemies();
+Console.WriteLine($"Liczba pokonanych: {pokonany}");
