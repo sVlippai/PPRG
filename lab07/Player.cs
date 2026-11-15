@@ -37,21 +37,19 @@
     }
 
     public void TakeDamage(int damage)
-    {
+    { 
         if (damage == 0 || damage < 0)
         {
             Console.WriteLine("Atak sie nie udal.");
             return;
         }
-
-
-        Health -= damage;
-
-        if (Health < 0)
-        {
-            Health = 0;
-        }
         
+        Health -= damage;
+        
+         if (Health < 0)
+         {
+             Health = 0; 
+         }
     }
 
     public void Heal(int amount)
