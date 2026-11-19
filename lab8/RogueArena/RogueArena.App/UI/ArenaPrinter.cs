@@ -11,4 +11,12 @@ public static class ArenaPrinter
     {
         Console.WriteLine($"{name}: {health} HP");
     }
+    
+    public static void ShowInventory(string name, int price)
+    {
+        foreach item in Inventory
+        {
+            Console.WriteLine($"{name}: {price} zlota.");
+        }
+    }
 }
