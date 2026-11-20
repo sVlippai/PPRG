@@ -1,5 +1,4 @@
-﻿using RogueArena.Core.Items;
-namespace RogueArena.App.UI;
+﻿namespace RogueArena.App.UI;
 
 public static class ArenaPrinter
 {

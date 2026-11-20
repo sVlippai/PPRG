@@ -1,10 +1,4 @@
-﻿using RogueArena.App.UI;
-using RogueArena.Core.Characters;
-using RogueArena.Core.Combat;
-using RogueArena.Core.Items;
-
-
-Item miecz = new Item("Miecz", 40);
+﻿Item miecz = new Item("Miecz", 40);
 Item mikstura = new Item("Mikstura", 15);
 Inventory inventory = new Inventory();
 inventory.Add(miecz);
