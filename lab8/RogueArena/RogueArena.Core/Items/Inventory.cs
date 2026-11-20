@@ -2,7 +2,7 @@
 
 public class Inventory
 {
-    public List<Item> Items { get; } = new List<Item>();
+    public static List<Item> Items { get; } = new List<Item>();
 
     public void Add(Item item)
     {

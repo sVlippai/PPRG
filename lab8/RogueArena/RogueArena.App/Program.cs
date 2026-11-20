@@ -7,6 +7,8 @@ using RogueArena.Core.Items;
 Item miecz = new Item("Miecz", 40);
 Item mikstura = new Item("Mikstura", 15);
 Inventory inventory = new Inventory();
+inventory.Add(miecz);
+inventory.Add(mikstura);
 Hero hero = new Hero("Ada", 100);
 Monster monster = new Monster("Ork", 45);
 
@@ -17,4 +19,5 @@ monster.TakeDamage(damage);
 ArenaPrinter.ShowTitle("Rogue Arena");
 Console.WriteLine($"{hero.Name} zadaje {damage} obrażeń.");
 ArenaPrinter.ShowHealth(monster.Name, monster.Health);
-ArenaPrinter.ShowInventory(inventory);
+ArenaPrinter.ShowInventory();
+Console.WriteLine($"Łączna wartość: {inventory.CalculateValue()}");

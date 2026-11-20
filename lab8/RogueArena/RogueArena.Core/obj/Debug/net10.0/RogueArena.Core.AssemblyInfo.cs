@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RogueArena.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bfa06a3a9739aab978a82f97b2bd4878351b99f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d1801df154672eae5241db3730ac896841941d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("RogueArena.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RogueArena.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

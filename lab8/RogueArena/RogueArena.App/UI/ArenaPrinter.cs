@@ -1,4 +1,5 @@
-﻿namespace RogueArena.App.UI;
+﻿using RogueArena.Core.Items;
+namespace RogueArena.App.UI;
 
 public static class ArenaPrinter
 {
@@ -12,11 +13,11 @@ public static class ArenaPrinter
         Console.WriteLine($"{name}: {health} HP");
     }
     
-    public static void ShowInventory(string name, int price)
+    public static void ShowInventory()
     {
-        foreach item in Inventory
+        foreach (Item item in Inventory.Items)
         {
-            Console.WriteLine($"{name}: {price} zlota.");
+            Console.WriteLine($"{item.Name}: {item.Price} zlota.");
         }
     }
 }
