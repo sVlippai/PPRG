@@ -55,3 +55,5 @@ Z:/prg/PPRG/lab8/RogueArena.App/obj/Debug/net10.0/ref/RogueArena.App.dll
 /Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.App/obj/Debug/net10.0/RogueAre.BAD635AC.Up2Date
 /Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.App/obj/Debug/net10.0/RogueArena.App.genruntimeconfig.cache
 /Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.App/obj/Debug/net10.0/ref/RogueArena.App.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.App/bin/Debug/net10.0/RogueArena.Reporting.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.App/bin/Debug/net10.0/RogueArena.Reporting.pdb

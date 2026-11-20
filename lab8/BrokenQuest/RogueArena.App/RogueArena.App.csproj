@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RogueArena.Core\RogueArena.Core.csproj" />
+    <ProjectReference Include="..\RogueArena.Reporting\RogueArena.Reporting.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

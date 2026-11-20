@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "RogueArena.App/1.0.0": {
         "dependencies": {
-          "RogueArena.Core": "1.0.0"
+          "RogueArena.Core": "1.0.0",
+          "RogueArena.Reporting": "1.0.0"
         },
         "runtime": {
           "RogueArena.App.dll": {}
@@ -17,6 +18,17 @@
       "RogueArena.Core/1.0.0": {
         "runtime": {
           "RogueArena.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "RogueArena.Reporting/1.0.0": {
+        "dependencies": {
+          "RogueArena.Core": "1.0.0"
+        },
+        "runtime": {
+          "RogueArena.Reporting.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -31,6 +43,11 @@
       "sha512": ""
     },
     "RogueArena.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RogueArena.Reporting/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

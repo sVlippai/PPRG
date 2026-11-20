@@ -1,0 +1,16 @@
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/bin/Debug/net10.0/RogueArena.Reporting.deps.json
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/bin/Debug/net10.0/RogueArena.Reporting.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/bin/Debug/net10.0/RogueArena.Reporting.pdb
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/bin/Debug/net10.0/RogueArena.Core.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/bin/Debug/net10.0/RogueArena.Core.pdb
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.csproj.AssemblyReference.cache
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.GeneratedMSBuildEditorConfig.editorconfig
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.AssemblyInfoInputs.cache
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.AssemblyInfo.cs
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.csproj.CoreCompileInputs.cache
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.sourcelink.json
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueAre.485DA464.Up2Date
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/refint/RogueArena.Reporting.dll
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/RogueArena.Reporting.pdb
+/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/obj/Debug/net10.0/ref/RogueArena.Reporting.dll

@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/RogueArena.Core.dll": {}
         }
+      },
+      "RogueArena.Reporting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "RogueArena.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RogueArena.Reporting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RogueArena.Reporting.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../RogueArena.Core/RogueArena.Core.csproj",
       "msbuildProject": "../RogueArena.Core/RogueArena.Core.csproj"
+    },
+    "RogueArena.Reporting/1.0.0": {
+      "type": "project",
+      "path": "../RogueArena.Reporting/RogueArena.Reporting.csproj",
+      "msbuildProject": "../RogueArena.Reporting/RogueArena.Reporting.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "RogueArena.Core >= 1.0.0"
+      "RogueArena.Core >= 1.0.0",
+      "RogueArena.Reporting >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -54,6 +73,9 @@
           "projectReferences": {
             "/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Core/RogueArena.Core.csproj": {
               "projectPath": "/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Core/RogueArena.Core.csproj"
+            },
+            "/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/RogueArena.Reporting.csproj": {
+              "projectPath": "/Users/veranikalipai/Documents/PJATK/RiderProjects/PPRG/lab8/BrokenQuest/RogueArena.Reporting/RogueArena.Reporting.csproj"
             }
           }
         }
